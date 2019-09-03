@@ -1,8 +1,8 @@
-output: program5_2.o
-	gcc program5_2.o -o output
+output: main.o
+	gcc main.o -o dt
 
-program5_2.o: program5_2.c
-	gcc -c program5_2.c
+program5_2.o: main.c
+	gcc -c main.c
 
 clean:
-	rm *.o output
+	rm *.o dt
