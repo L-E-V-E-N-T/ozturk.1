@@ -1,0 +1,42 @@
+The invocation is ./dt with the following possible options
+
+dt [-h] [-I n] [-L -d -g -i -p -s -t -u | -l] [dirname]
+
+hPrint a help message and exit.
+I n Change indentation tonspaces for each level.
+L Follow symbolic links, if any.  Default will be to not follow symbolic links. (This is not working, please see following info)
+t Print information on file type.
+p Print permission bits asrwxrwxrwx.
+i Print the number of links to file in inode table.
+u Print theuidassociated with the file.
+g Print thegidassociated with the file.
+s Print the size of file in bytes.
+
+You can only choose one from each section for square bracket,
+For example this program can't be run with -d and -g option at the same time
+
+to see the version control of this project please see the link below:
+https://github.com/L-E-V-E-N-T/ozturk.1
+
+There are some faulty issues with my program.
+Even if I have spent too much time on it, this is what I can within the limited time of project.
+I will mention what's wrong below, at least the ones that I know.
+I think many of these problems are related.
+I feel like if I correct something most of them especially the ones about the info comes from
+stat will be gone.
+
+-> -s option prints wrong file size for the ones in cwd. It even sometimes gives negative values.
+	-I think this could be about casting or overlow issue, but I couldn't find it out.
+-> -d option prints wrong date for the last access time. I couldn't find out the reason but it usually print 1969
+-> -L option does nothing, I didn't understand following symbolic links in class and didn't have time to do it
+-> Another problem is that when you run the program with a given dirname it writes only the files, directories and
+   subdirectory's files and directories. It doesn't write the subdirectories of subdirectories.
+	-I think I found out the reason for this. I am using realpath to get the path and then do string concationation
+	 for the following one. When the program runs with cwd it works well, but when the program runs with another
+	 directory than cwd, it takes the cwd address and attach the file name and thus gets a wrong path. This doesn't
+	 make my program crush. It just get the wrong output from isDirectory function and it does not follow the contend
+	 of the that directory. I think this is the reason, but I couldn't find a way to change my cwd to what is coming
+	 from argv. I might be able to correct this, but since due date past I have to submit the project.
+
+Lastly, I am so sorry for submitting late and incomplete. I really tried hard, I feel close to finish, but couldn't make it. I am sorry.
+I am looking forward with no confidence at all since this is the P1 and I spent this much time and couldn't make it.

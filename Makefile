@@ -1,7 +1,7 @@
 output: main.o
 	gcc main.o -o dt
 
-program5_2.o: main.c
+main.o: main.c
 	gcc -c main.c
 
 clean:
